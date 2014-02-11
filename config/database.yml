@@ -1,0 +1,8 @@
+
+development:
+  adapter: postgresql
+  database: music
+  user: stevenweiss
+  host: localhost
+  pool: 5
+  timeout: 5000
