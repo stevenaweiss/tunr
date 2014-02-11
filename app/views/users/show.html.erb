@@ -1,0 +1,18 @@
+<h1> <%= @user.first_name %> <%= @user.last_name %>!</h1>
+<ul>
+  <li><%=  @user.dob%></li>
+  <li><%=  @user.gender%></li>
+  <li><%=  @user.facebook_link%></li>
+  <li><%=  @user.email%></li>
+  <a href="/users/<%= @user.id %>/edit">Edit This User</a>
+
+
+ <form action="/users/<%= @user.id %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE" />
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+  <button>Delete This User!</button>
+</form>
+
+</ul>
+
+<%= debug@user %>

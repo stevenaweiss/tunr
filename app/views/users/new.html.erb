@@ -1,0 +1,48 @@
+<h1>New User!</h1>
+
+<% unless @user.nil?  %>
+<div id="errors">
+    <h3><%= "Errors!" %></h3>
+    <ul>
+    <% @user.errors.messages.each do |field, error| %>
+        <li><em><%= "#{field.capitalize} #{error.first}!" %></em></li>
+    <% end %>
+  </ul>
+  </div>
+<% end  %>
+
+
+<form action="/users" method="POST">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+  
+  <label>Email:
+    <input type="email", name="email">
+  </label></br>
+
+  <label>First Name:
+    <input type="string", name="first_name">
+  </label></br>
+
+  <label>Last Name:
+    <input type="string", name="last_name">
+  </label></br>
+
+  <label>Date Of Birth:
+    <input type="date", name="dob">
+  </label></br>
+
+  <label>Gender(m/f):
+    <input type="string", name="gender">
+  </label></br>
+
+  <label>Facebook_url:
+    <input type="text", name="facebook_link">
+  </label></br>
+
+  <label>Password:
+    <input type="password", name="password">
+  </label></br>
+
+  <button>Submit!</button>
+
+</form>

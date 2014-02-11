@@ -1,0 +1,49 @@
+<h1>Edit <%= @user.first_name %>!</h1>
+
+<% unless @update  %>
+<div id="errors">
+    <h3><%= "Errors!" %></h3>
+    <ul>
+    <% @user.errors.messages.each do |field, error| %>
+        <li><em><%= "#{field.capitalize} #{error.first}!" %></em></li>
+    <% end %>
+  </ul>
+  </div>
+<% end  %>
+
+<form action="/users/<%= @user.id %>" method="POST" />
+  <input type="hidden" name="_method" value="patch">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+
+    <label>First Name:
+    <input type="string", name="first_name", value="<%= @user.first_name %>">
+  </label>
+
+    <label>Last Name:
+    <input type="string", name="last_name" value="<%= @user.last_name %>">
+  </label>
+
+  <label>Date Of Birth:
+    <input type="date", name="dob" value="<%= @user.dob %>">
+  </label>
+
+  <label>Gender(m/f):
+    <input type="string", name="gender" value="<%= @user.gender %>">
+  </label>
+
+  <label>Facebook_link:
+    <input type="string", name="facebook_link" value="<%= @user.facebook_link %>">
+  </label>
+
+  <label>Email:
+    <input type="string", name="email" value="<%= @user.email %>">
+  </label>
+
+  <label>Password:
+    <input type="password", name="password">
+  </label>
+
+  <button>Submit!</button>
+
+
+</form>
