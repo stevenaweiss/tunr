@@ -1,4 +1,4 @@
-<h1>Add A New Artist</h1>
+<!-- <h1>Add A New Artist</h1>
 <form action="/artists" method="POST">
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
   <label>Name:
@@ -13,7 +13,18 @@
     <input type="text" name="photo_url" />
   </label>
   <button>Submit!</button>
+</form> -->
+<h1>Add A New Artist</h1>
 
+<%= form_for @artist, url: {action: "create"} do |f| %>
+  <%= f.label :name %>:
+  <%= f.text_field :name %><br />
 
+  <%= f.label :genre %>:
+  <%= f.text_field :genre %><br />
 
-</form>
+  <%= f.label :photo_url %>:
+  <%= f.text_field :photo_url %><br />
+
+  <%= f.submit "Create" %>
+<% end %>

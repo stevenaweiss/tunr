@@ -4,7 +4,7 @@
   <li><%=  @user.gender%></li>
   <li><%=  @user.facebook_link%></li>
   <li><%=  @user.email%></li>
-  <a href="/users/<%= @user.id %>/edit">Edit This User</a>
+  <%= link_to "Edit This User!", edit_user_path(@user)%>
 
 
  <form action="/users/<%= @user.id %>" method="POST">

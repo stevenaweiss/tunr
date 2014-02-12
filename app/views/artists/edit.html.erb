@@ -1,4 +1,4 @@
-<h1>Edit <%= @artist.name %></h1>
+<!-- <h1>Edit <%= @artist.name %></h1>
 
 <form action="/artists/<%= @artist.id %>" method="POST" />
   <input type="hidden" name="_method" value="patch">
@@ -16,6 +16,20 @@
   </label>
   <button>Submit!</button>
 
-
-
 </form>
+ -->
+
+<h1>Update!</h1>
+
+<%= form_for @artist, url: {action: "update"} do |f| %>
+  <%= f.label :name %>:
+  <%= f.text_field :name %><br />
+
+  <%= f.label :genre %>:
+  <%= f.text_field :genre %><br />
+
+  <%= f.label :photo_url %>:
+  <%= f.text_field :photo_url %><br />
+
+  <%= f.submit "Update" %>
+<% end %>

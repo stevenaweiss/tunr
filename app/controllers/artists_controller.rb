@@ -1,44 +1,52 @@
 class ArtistsController < ApplicationController
 
-  def index
-    @artists = Artist.all
-    render(:index)
-  end
 
-  def show
-    @artist = Artist.find(params[:id])
-    @songs = Song.where(artist_id: params[:id])
-    render(:show)
-  end
+  before_action :load_artist, only: [:show, :edit, :update, :destroy]
 
-  def new
-    render(:new)
-  end
+    def index
+      @artists = Artist.all
+      render(:index)
+    end
 
-  def create
-    Artist.create(name: params[:name], genre: params[:genre], photo_url: params[:photo_url])
-    redirect_to("/artists")
-  end
+    def show
+      @songs = Song.where(artist_id: params[:id])
+      render(:show)
+    end
 
+    def new
+      @artist = Artist.new
+      render(:new)
+    end
 
-  def edit
-    @artist = Artist.find(params[:id])
-    render(:edit)
-  end
-
-  def update
-    @artist = Artist.find(params[:id])
-    @artist.update(name: params[:name], genre: params[:genre], photo_url: params[:photo_url])
-    redirect_to("/artists")
-  end
-
-  def destroy
-   @artist = Artist.find(params[:id])
-   @artist.destroy
-   redirect_to("/artists")
-  end
+    def create
+      Artist.create(artist_params)
+      redirect_to("/artists")
+    end
 
 
+    def edit
+      render(:edit)
+    end
+
+    def update
+      @artist.update(artist_params)
+      redirect_to("/artists")
+    end
+
+      def destroy
+        @artist.destroy
+        redirect_to("/artists")
+      end
+
+    private
+
+      def load_artist
+        @artist = Artist.find(params[:id])
+      end
+
+      def artist_params
+        params.require(:artist).permit(:name, :genre, :photo_url)
+      end
 
 
 end

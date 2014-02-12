@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
    def load_user
     return @user = User.find(params[:id])
-  end
+    end
 
   def user_params
 

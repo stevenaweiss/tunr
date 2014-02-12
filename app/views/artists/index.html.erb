@@ -6,7 +6,8 @@
   <li><%= artist.genre %></li>
   <li><img src="<%= artist.photo_url %>" width="400"></li>
   </a>
-  <a href="/artists/<%= artist.id %>/edit">Edit This Artist</a>
+ <!--  <a href="/artists/<%= artist.id %>/edit">Edit This Artist</a> -->
+ <%= link_to "Edit Artist!", edit_artist_path(artist)%>
 
   <form action="/artists/<%= artist.id %>" method="POST">
   <input type="hidden" name="_method" value="DELETE" />
@@ -17,5 +18,5 @@
 <%end %>
 </br>
 
-<a href="/artists/new">Create a New Artist</a>
+<%= link_to "Make A New Artist!", new_artist_path%>
 </ul>

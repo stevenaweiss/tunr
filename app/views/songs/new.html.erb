@@ -1,4 +1,4 @@
-<h1>New Song!</h1>
+<!-- <h1>New Song!</h1>
 
 <form action="/artists/<%= @artist.id %>/songs" method="POST">
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
@@ -11,7 +11,15 @@
   </label>
 
   <button>Submit!</button>
+</form> -->
 
+<h1>Add A New Song!</h1>
+<%= form_for [@artist, @song] do |f| %>
+  <%= f.label :title %>:
+  <%= f.text_field :title %><br />
 
+  <%= f.label :year %>:
+  <%= f.text_field :year %><br />
 
-</form>
+  <%= f.submit "Create" %>
+<% end %>
